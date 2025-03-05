@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/diabetes.csv
+      hash: md5
+      md5: 2fef5f3fd179b50c71a85a8f6b7d6e93
+      size: 23875
+    - path: src/preprocess.py
+      hash: md5
+      md5: de2ebfdee63758ff2d0dd594ea989a28
+      size: 733
+    outs:
+    - path: data/processed/diabetes_preprocessed.csv
+      hash: md5
+      md5: b12fb8837d5e1f347b42bb21c252d6b2
+      size: 123388
+  split:
+    cmd: python src/split.py
+    deps:
+    - path: data/processed/diabetes_preprocessed.csv
+      hash: md5
+      md5: b12fb8837d5e1f347b42bb21c252d6b2
+      size: 123388
+    - path: src/split.py
+      hash: md5
+      md5: ff443b49a9007e7bfb2ebacd7ea4356e
+      size: 630
+    outs:
+    - path: data/processed/X_test.csv
+      hash: md5
+      md5: a44ed3672fd6f9908e8e9ee3be04f44a
+      size: 24086
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: 7de17e0179793ef5232df465d7542baa
+      size: 96046
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: e827f980a700555abf5d5fe039de5c9f
+      size: 471
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: c65d3ac9a2a3bb33aac10ac722c6d316
+      size: 1851

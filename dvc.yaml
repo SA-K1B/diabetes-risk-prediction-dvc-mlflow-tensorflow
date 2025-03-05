@@ -5,4 +5,14 @@ stages:
       - data/raw/diabetes.csv
       - src/preprocess.py
     outs:
-      - data/processed/diabetes_preprocess.csv
+      - data/processed/diabetes_preprocessed.csv
+  split:
+    cmd: python src/split.py
+    deps:
+      - data/processed/diabetes_preprocessed.csv
+      - src/split.py
+    outs:
+      - data/processed/X_train.csv
+      - data/processed/X_test.csv
+      - data/processed/y_train.csv
+      - data/processed/y_test.csv
